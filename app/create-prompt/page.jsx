@@ -31,9 +31,10 @@ const CreatePromptPage = () => {
       });
 
       if (response.ok) {
-        console.log('Redirecting...');
-        // router.push('/');
-        router.replace('/');
+        router.push('/');
+        router.refresh();
+      } else {
+        console.error('Error creating prompt:', result.error);
       }
     } catch (error) {
       console.log(error);
