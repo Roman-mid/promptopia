@@ -20,9 +20,6 @@ const CreatePromptPage = () => {
     try {
       const response = await fetch('/api/prompt/new', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify({
           prompt: post.prompt,
           tag: post.tag,
@@ -30,13 +27,8 @@ const CreatePromptPage = () => {
         }),
       });
 
-      const result = await response.json();
-
       if (response.ok) {
         router.push('/');
-        router.refresh();
-      } else {
-        console.error('Error creating prompt:', result.error);
       }
     } catch (error) {
       console.log(error);
