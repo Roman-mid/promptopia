@@ -20,6 +20,9 @@ const CreatePromptPage = () => {
     try {
       const response = await fetch('/api/prompt/new', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           prompt: post.prompt,
           tag: post.tag,
@@ -28,7 +31,9 @@ const CreatePromptPage = () => {
       });
 
       if (response.ok) {
-        router.push('/');
+        console.log('Redirecting...');
+        // router.push('/');
+        router.replace('/');
       }
     } catch (error) {
       console.log(error);
