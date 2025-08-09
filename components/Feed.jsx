@@ -4,22 +4,15 @@ import { useState, useEffect } from 'react';
 import PromptCard from './PromptCard';
 
 const Feed = () => {
-  const [searchUser, setSearchUser] = useState({ name: '', id: '' });
   const [searchText, setSearchText] = useState('');
   const [posts, setPosts] = useState([]);
 
   const handleSearchText = (e) => {
     setSearchText(e.target.value);
-    setSearchUser({ name: '', id: '' });
   };
 
   const handleTagClick = (post) => {
     setSearchText(post);
-  };
-
-  const handleUserClick = (creator) => {
-    setSearchUser({ name: creator.username, id: creator._id });
-    setSearchText(creator.username);
   };
 
   useEffect(() => {
@@ -48,9 +41,7 @@ const Feed = () => {
       <PromtCardList
         data={posts}
         searchText={searchText}
-        searchUser={searchUser}
         handleTagClick={handleTagClick}
-        handleUserClick={handleUserClick}
       />
     </section>
   );
@@ -58,18 +49,12 @@ const Feed = () => {
 
 export default Feed;
 
-const PromtCardList = ({
-  data,
-  handleTagClick,
-  searchText,
-  searchUser,
-  handleUserClick,
-}) => {
+const PromtCardList = ({ data, handleTagClick, searchText }) => {
   const filteredPosts = data.filter(
     (post) =>
       post.tag.replace('#', '').includes(searchText.replace('#', '')) ||
       post.prompt.includes(searchText) ||
-      post.creator._id === searchUser.id
+      post?.creator.username.includes(searchText)
   );
 
   return (
@@ -80,7 +65,6 @@ const PromtCardList = ({
           key={post._id}
           post={post}
           handleTagClick={handleTagClick}
-          handleUserClick={handleUserClick}
         />
       ))}
     </div>

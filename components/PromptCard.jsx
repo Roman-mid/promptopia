@@ -5,13 +5,13 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const PromptCard = ({
   post,
   handleTagClick,
   handleEdit,
   handleDelete,
-  handleUserClick,
   className = '',
 }) => {
   const [copied, setCopied] = useState('');
@@ -28,23 +28,29 @@ const PromptCard = ({
   return (
     <div className={`${className} prompt_card `}>
       <div className='flex justify-between items-start gap-5 cursor-pointer'>
-        <div className='flex-1 flex justify-start items-center gap-3 '>
-          <Image
-            src={post.creator.image}
-            alt='user_image'
-            width={40}
-            height={40}
-            className='rounded-full object-contain'
-          />
-          <div
-            className='fle flex-col'
-            onClick={() => handleUserClick?.(post.creator)}
-          >
-            <h3 className='font-satoshi font-bold text-gray-900'>
-              {post.creator.username}
-            </h3>
+        <Link
+          href={
+            session?.user.id === post.creator._id
+              ? '/profile'
+              : `/profile/${post.creator._id}`
+          }
+        >
+          <div className='flex-1 flex justify-start items-center gap-3 '>
+            <Image
+              src={post.creator.image}
+              alt='user_image'
+              width={40}
+              height={40}
+              className='rounded-full object-contain'
+            />
+            <div className='fle flex-col'>
+              <h3 className='font-satoshi font-bold text-gray-900'>
+                {post.creator.username}
+              </h3>
+            </div>
           </div>
-        </div>
+        </Link>
+
         <div className='copy_bnt' onClick={handleCopy}>
           <Image
             src={
