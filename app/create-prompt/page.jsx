@@ -30,6 +30,8 @@ const CreatePromptPage = () => {
         }),
       });
 
+      const result = await response.json();
+
       if (response.ok) {
         router.push('/');
         router.refresh();
