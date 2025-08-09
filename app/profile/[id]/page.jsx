@@ -13,7 +13,7 @@ const UserProfile = ({ params }) => {
       const response = await fetch(`/api/users/${params.id}/posts`);
       const data = await response.json();
 
-      setPosts(data);
+      setPosts(data.reverse());
     };
 
     getPosts();
