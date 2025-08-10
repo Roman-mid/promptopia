@@ -30,6 +30,7 @@ const EditPromptPage = () => {
         }),
       });
 
+      console.log(response);
       if (response.ok) {
         router.push('/');
       }
