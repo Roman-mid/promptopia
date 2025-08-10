@@ -17,29 +17,30 @@ const CreatePromptPage = () => {
     e.preventDefault();
     setSubmitting(true);
 
-    try {
-      const response = await fetch('/api/prompt/new', {
-        method: 'POST',
-        body: JSON.stringify({
-          prompt: post.prompt,
-          tag: post.tag,
-          userId: session?.user.id,
-        }),
-      });
+    // try {
+    const response = await fetch('/api/prompt/new', {
+      method: 'POST',
+      body: JSON.stringify({
+        prompt: post.prompt,
+        tag: post.tag,
+        userId: session?.user.id,
+      }),
+    });
 
-      const res = await response.json();
+    const res = await response.json();
 
-      console.log(response);
-      console.log(res);
+    console.log(response);
+    console.log(res);
 
-      if (response.ok) {
-        router.push('/');
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setSubmitting(false);
-    }
+    // if (response.ok) {
+    router.refresh();
+    router.push('/');
+    // }
+    // } catch (error) {
+    // console.log(error);
+    // } finally {
+    setSubmitting(false);
+    // }
   };
 
   return (
