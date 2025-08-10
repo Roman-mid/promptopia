@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 import PromptCard from './PromptCard';
 
-const Feed = ({ posts }) => {
-  // const [posts, setPosts] = useState([]);
+const Feed = () => {
+  const [posts, setPosts] = useState([]);
   const [searchText, setSearchText] = useState('');
 
   const handleSearchText = (e) => {
@@ -15,21 +15,21 @@ const Feed = ({ posts }) => {
     setSearchText(post);
   };
 
-  // useEffect(() => {
-  //   const getPosts = async () => {
-  //     const response = await fetch('/api/prompt', {
-  //       cache: 'no-store',
-  //     });
+  useEffect(() => {
+    const getPosts = async () => {
+      const response = await fetch('/api/prompt', {
+        cache: 'no-store',
+      });
 
-  //     console.log('fetching data...');
+      console.log('fetching data...');
 
-  //     const data = await response.json();
+      const data = await response.json();
 
-  //     setPosts(data.reverse());
-  //   };
+      setPosts(data.reverse());
+    };
 
-  //   getPosts();
-  // }, []);
+    getPosts();
+  }, []);
 
   return (
     <section className='feed'>
