@@ -18,8 +18,10 @@ const Feed = () => {
   useEffect(() => {
     const getPosts = async () => {
       const response = await fetch('/api/prompt', {
-        cache: 'no-cache',
+        cache: 'no-store',
       });
+
+      console.log('fetching data...');
 
       const data = await response.json();
 
