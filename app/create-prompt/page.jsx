@@ -30,14 +30,13 @@ const CreatePromptPage = () => {
         }),
       });
 
-      if (!response.ok) {
-        const text = await response.text(); // чтобы не падало при non-JSON
-        throw new Error(text);
-      }
+      if (response.ok) {
+        // const res = await response.json();
 
-      const res = await response.json();
-      router.push('/');
-      console.log(res);
+        router.push('/');
+        console.log(res);
+        return;
+      }
     } catch (error) {
       console.log(error);
     } finally {
