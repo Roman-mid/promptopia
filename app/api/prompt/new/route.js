@@ -14,16 +14,14 @@ export const POST = async (req) => {
 
     await newPrompt.save();
 
-    return new Response(
-      JSON.stringify({ message: 'Prompt was created', prompt: newPrompt }),
-      {
-        status: 201,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    return new Response(JSON.stringify({ message: 'Prompt was created' }), {
+      status: 201,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   } catch (error) {
+    console.error('Server error creating prompt:', error);
     return new Response(
       JSON.stringify({ error: 'Failed to create a new prompt' }),
       {
