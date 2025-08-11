@@ -8,12 +8,16 @@ export const GET = async (request, { params }) => {
     const prompt = await Prompt.findById(params.id).populate('creator');
 
     if (!prompt) {
-      return new Response('Prompt is no exist', { status: 404 });
+      return new Response(JSON.stringify({ error: 'Prompt is no exist' }), {
+        status: 404,
+      });
     }
 
     return new Response(JSON.stringify(prompt), { status: 200 });
   } catch (error) {
-    return new Response('Internet Server Error', { status: 500 });
+    return new Response(JSON.stringify({ error: 'Internet Server Error' }), {
+      status: 500,
+    });
   }
 };
 
@@ -27,7 +31,9 @@ export const PATCH = async (request, { params }) => {
     const existingPrompt = await Prompt.findById(params.id);
 
     if (!existingPrompt) {
-      return new Response('Prompt is not defined', { status: 404 });
+      return new Response(JSON.stringify({ error: 'Prompt is not defined' }), {
+        status: 404,
+      });
     }
 
     // Update the prompt with new data
@@ -36,9 +42,14 @@ export const PATCH = async (request, { params }) => {
 
     await existingPrompt.save();
 
-    return new Response('Successfully updated the Prompts', { status: 200 });
+    return new Response(
+      JSON.stringify({ message: 'Prompt has successfully updated' }),
+      { status: 200 }
+    );
   } catch (error) {
-    return new Response('Faild to edit the prompt', { status: 500 });
+    return new Response(JSON.stringify({ error: 'Faild to edit the prompt' }), {
+      status: 500,
+    });
   }
 };
 
@@ -49,8 +60,13 @@ export const DELETE = async (request, { params }) => {
     // Find the prompt by ID and remove it
     await Prompt.findByIdAndRemove(params.id);
 
-    return new Response('Prompt deleted successfully', { status: 200 });
+    return new Response(
+      JSON.stringify({ message: 'Prompt deleted successfully' }),
+      { status: 200 }
+    );
   } catch (error) {
-    return new Response('Error deleting prompt', { status: 500 });
+    return new Response(JSON.stringify({ error: 'Error deleting prompt' }), {
+      status: 500,
+    });
   }
 };

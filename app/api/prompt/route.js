@@ -13,6 +13,11 @@ export const GET = async (request) => {
       },
     });
   } catch (error) {
-    return new Response('Failed of fetching all prompts', { status: 500 });
+    return new Response(
+      JSON.stringify({ error: 'Failed of fetching all prompts' }),
+      {
+        status: 500,
+      }
+    );
   }
 };
