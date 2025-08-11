@@ -16,7 +16,7 @@ export const POST = async (req) => {
 
     await newPrompt.save();
 
-    return new Response(JSON.stringify(newPrompt), {
+    return new Response(JSON.stringify({ message: 'Promt was created' }), {
       status: 201,
       headers: {
         'Content-Type': 'application/json',
