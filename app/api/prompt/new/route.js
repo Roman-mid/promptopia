@@ -18,12 +18,18 @@ export const POST = async (req) => {
 
     return new Response(JSON.stringify(newPrompt), {
       status: 201,
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
   } catch (error) {
     return new Response(
       JSON.stringify({ error: 'Failed to create a new prompt' }),
       {
         status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+        },
       }
     );
   }

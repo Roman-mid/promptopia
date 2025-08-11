@@ -20,6 +20,9 @@ const CreatePromptPage = () => {
     try {
       const response = await fetch('/api/prompt/new', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           prompt: post.prompt,
           tag: post.tag,
@@ -27,14 +30,14 @@ const CreatePromptPage = () => {
         }),
       });
 
-      const res = await response.json();
-
-      console.log(response);
-      console.log(res);
-
-      if (response.ok) {
-        router.push('/');
+      if (!response.ok) {
+        const text = await response.text(); // чтобы не падало при non-JSON
+        throw new Error(text);
       }
+
+      const res = await response.json();
+      router.push('/');
+      console.log(res);
     } catch (error) {
       console.log(error);
     } finally {
