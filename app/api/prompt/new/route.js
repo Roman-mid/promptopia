@@ -4,8 +4,6 @@ import Prompt from '@models/prompt';
 export const POST = async (req) => {
   const { userId, prompt, tag } = await req.json();
 
-  console.log({ userId, prompt, tag });
-
   try {
     await connectToDB();
     const newPrompt = new Prompt({
@@ -16,10 +14,8 @@ export const POST = async (req) => {
 
     await newPrompt.save();
 
-    console.log('Prompt saved:', newPrompt);
-
     return new Response(
-      JSON.stringify({ message: 'Promt was created', prompt: newPrompt }),
+      JSON.stringify({ message: 'Prompt was created', prompt: newPrompt }),
       {
         status: 201,
         headers: {
@@ -28,7 +24,6 @@ export const POST = async (req) => {
       }
     );
   } catch (error) {
-    console.error('Error while creating prompt:', error);
     return new Response(
       JSON.stringify({ error: 'Failed to create a new prompt' }),
       {
