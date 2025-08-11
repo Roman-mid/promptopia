@@ -1,12 +1,11 @@
 'use client';
 
+import Loading from '@app/loading';
 import Profile from '@components/Profile';
 import { useEffect, useState } from 'react';
 
 const UserProfile = ({ params }) => {
-  const [posts, setPosts] = useState([]);
-
-  const userName = posts[0]?.creator.username;
+  const [posts, setPosts] = useState(null);
 
   useEffect(() => {
     const getPosts = async () => {
@@ -17,7 +16,13 @@ const UserProfile = ({ params }) => {
     };
 
     getPosts();
-  }, []);
+  }, [params.id]);
+
+  if (!posts) {
+    return <Loading />;
+  }
+
+  const userName = posts[0]?.creator.username || 'user';
 
   return (
     <Profile

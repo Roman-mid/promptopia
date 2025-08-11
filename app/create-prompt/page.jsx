@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
@@ -17,6 +17,12 @@ const CreatePromptPage = () => {
     e.preventDefault();
     setSubmitting(true);
 
+    if (!session) {
+      alert('At first you need to sign in');
+      router.replace('/');
+      return;
+    }
+
     try {
       const response = await fetch('/api/prompt/new', {
         method: 'POST',
@@ -30,7 +36,6 @@ const CreatePromptPage = () => {
         }),
       });
 
-      const res = await response.json();
       if (response.ok) {
         router.push('/');
         return;
@@ -41,6 +46,12 @@ const CreatePromptPage = () => {
       setSubmitting(false);
     }
   };
+
+  useEffect(() => {
+    if (!session) {
+      router.replace('/');
+    }
+  }, [session]);
 
   return (
     <Form

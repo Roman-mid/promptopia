@@ -4,9 +4,10 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 import Profile from '@components/Profile';
+import Loading from '@app/loading';
 
 const MyProfile = () => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(null);
 
   const { data: session } = useSession();
   const router = useRouter();
@@ -43,6 +44,10 @@ const MyProfile = () => {
       fetchPosts();
     }
   }, [session?.user.id]);
+
+  if (!posts) {
+    return <Loading />;
+  }
 
   return (
     <Profile

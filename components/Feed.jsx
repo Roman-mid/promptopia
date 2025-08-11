@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import PromptCard from './PromptCard';
+import Loading from '@app/loading';
 
 const Feed = () => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(null);
   const [searchText, setSearchText] = useState('');
 
   const handleSearchText = (e) => {
@@ -30,6 +31,10 @@ const Feed = () => {
 
     getPosts();
   }, []);
+
+  if (!posts) {
+    return <Loading />;
+  }
 
   return (
     <section className='feed'>
@@ -63,7 +68,7 @@ const PromtCardList = ({ data, handleTagClick, searchText }) => {
   );
 
   return (
-    <div className='mt-16  prompt_leyout '>
+    <div className='mt-16  prompt_leyout w-full'>
       {filteredPosts.map((post) => (
         <PromptCard
           className='mt-4'
