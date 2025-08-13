@@ -62,9 +62,12 @@ export default Feed;
 const PromtCardList = ({ data, handleTagClick, searchText }) => {
   const filteredPosts = data.filter(
     (post) =>
-      post.tag.replace('#', '').includes(searchText.replace('#', '')) ||
-      post.prompt.includes(searchText) ||
-      post?.creator.username.includes(searchText)
+      post.tag
+        .toLowerCase()
+        .replace('#', '')
+        .includes(searchText.toLowerCase().replace('#', '')) ||
+      post.prompt.toLowerCase().includes(searchText.toLowerCase()) ||
+      post?.creator.username.toLowerCase().includes(searchText).toLowerCase()
   );
 
   return (

@@ -169,3 +169,7 @@
 .flex-between {
   @apply flex justify-between items-center;
 }
+
+.smallText {
+  @apply whitespace-nowrap overflow-hidden text-ellipsis;
+}

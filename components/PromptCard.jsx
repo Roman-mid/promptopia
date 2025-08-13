@@ -43,8 +43,8 @@ const PromptCard = ({
               height={40}
               className='rounded-full object-contain'
             />
-            <div className='fle flex-col'>
-              <h3 className='font-satoshi font-bold text-gray-900'>
+            <div className='fle flex-col w-[90%]'>
+              <h3 className='font-satoshi font-bold text-gray-900 smallText'>
                 {post.creator.username}
               </h3>
             </div>
