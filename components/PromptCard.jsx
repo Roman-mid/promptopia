@@ -65,7 +65,7 @@ const PromptCard = ({
         </div>
       </div>
       <p className='my-4 font-satoshi text-sm text-gray-700'>{post.prompt}</p>
-      <p className='font-inter text-sm blue_gradient cursor-pointer flex gap-2'>
+      <p className='font-inter text-sm blue_gradient cursor-pointer flex gap-2 flex-wrap'>
         {post.tag.split(' ').map((tag, ind) => (
           <span key={ind} onClick={() => handleTagClick?.(tag)}>
             {tag[0] === '#' ? tag : `#${tag}`}

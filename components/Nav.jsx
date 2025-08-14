@@ -39,12 +39,11 @@ const Nav = () => {
             <Link href='/create-prompt' className='black_btn'>
               Create post
             </Link>
-            <button type='button' onClick={signOut} className='outline_btn'>
+            <Link href='/' onClick={signOut} className='outline_btn'>
               Sign Out
-            </button>
+            </Link>
             <Link href='/profile' className=''>
               <Image
-                // src='/assets/images/logo.svg'
                 src={session?.user.image}
                 className='rounded-full'
                 alt='profile'
@@ -97,16 +96,16 @@ const Nav = () => {
                 >
                   Create prompt
                 </Link>
-                <button
-                  type='button'
-                  className='black_btn w-full mt-5'
+                <Link
+                  href='/'
                   onClick={() => {
                     setToggleDropDown(false);
                     signOut();
                   }}
+                  className='black_btn w-full mt-5'
                 >
                   Sign Out
-                </button>
+                </Link>
               </div>
             )}
           </div>
