@@ -1,18 +1,22 @@
+## Promptopia — Your Personal AI Prompt Library
+
 What if all your best AI prompts were always at your fingertips?
+A simple powerful platform for storing, organizing, and sharing your favorite AI prompts with the community.
 
-I’ve built a small project that solves exactly this — a simple and convenient platform for storing and sharing AI prompts.
+### Core Features
+✍️ Create & Save Prompts — Add your own prompts and tag them with hashtags for easy categorization.
+🧩 Personal Dashboard — Edit and delete your prompts anytime.
+🌍 Community Feed — Browse prompts shared by others.
+🔍 Smart Search — Find prompts by text, hashtags, or author name.
+👤 User Pages — View all prompts from a specific user in one place.
 
-Core features:
- - Create and save prompts with hashtags for easy categorization
- - Edit and delete your own prompts in a personal dashboard
- - Browse prompts from the entire community
- - Search by text, hashtags, or author name
- - View a dedicated page with all prompts from a specific user
+### Tech Stack
+Next.js — Framework for fast, scalable web apps
+OAuth 2.0 — Secure authentication
+MongoDB Atlas — Cloud database for storing prompts
+JavaScript — Core application logic
+Tailwind CSS — Beautiful, responsive UI
 
-Tech stack:
- Next.js · OAuth 2.0 · MongoDB Atlas · JavaScript · Tailwind CSS
-
- Create a few prompts and let me know what you think in the comments.
- If you spot any bugs — share them too, and I’ll fix them!
-
-hashtag#Nextjs hashtag#MongoDB hashtag#OAuth hashtag#JavaScript hashtag#TailwindCSS hashtag#AI hashtag#PromptEngineering hashtag#WebDev hashtag#Fullstack hashtag#Frontend hashtag#Backend
+💬 Try It Out
+Create a few prompts and let me know what you think in the comments!
+If you spot any bugs — share them, and I’ll fix them quickly ⚡
