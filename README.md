@@ -21,3 +21,5 @@ Tailwind CSS — Beautiful, responsive UI </br>
 Create a few prompts and let me know what you think in the comments!
 
 If you spot any bugs — share them, and I’ll fix them quickly ⚡
+
+#Nextjs hashtag#MongoDB hashtag#OAuth hashtag#JavaScript hashtag#TailwindCSS hashtag#AI hashtag#PromptEngineering hashtag#WebDev hashtag#Fullstack hashtag#Frontend hashtag#Backend
