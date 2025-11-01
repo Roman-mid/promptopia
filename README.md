@@ -4,7 +4,7 @@ What if all your best AI prompts were always at your fingertips?
 A simple powerful platform for storing, organizing, and sharing your favorite AI prompts with the community.
 
 ### Core Features
-✍️ Create & Save Prompts — Add your own prompts and tag them with hashtags for easy categorization.
+✍️ Create & Save Prompts — Add your own prompts and tag them with hashtags for easy categorization. </br>
 🧩 Personal Dashboard — Edit and delete your prompts anytime.
 🌍 Community Feed — Browse prompts shared by others.
 🔍 Smart Search — Find prompts by text, hashtags, or author name.
