@@ -67,7 +67,7 @@ const PromtCardList = ({ data, handleTagClick, searchText }) => {
         .replace('#', '')
         .includes(searchText.toLowerCase().replace('#', '')) ||
       post.prompt.toLowerCase().includes(searchText.toLowerCase()) ||
-      post?.creator.username.toLowerCase().includes(searchText).toLowerCase()
+      post?.creator.username.toLowerCase().includes(searchText.toLowerCase())
   );
 
   return (
